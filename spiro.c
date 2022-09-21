@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define PRECISION 10
+#define PRECISION 100
 #define XSIZE 4
 #define YSIZE 4
 
