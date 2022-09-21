@@ -4,12 +4,12 @@ LIBS = -lm
 
 TARGET = spiro
 
-all: $(TARGET)
+all: $(TARGET) plot push
 
 $(TARGET): $(TARGET).c
 	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(LIBS)
 
-.PHONY: clean push
+.PHONY: clean push plot
 
 clean:
 	$(RM) $(TARGET)

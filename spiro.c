@@ -39,8 +39,8 @@ int main(int argc, char **argv) {
 
 	//The beginning of a graph in jgraph spec */
 	printf("newgraph\n");	
-	printf("xaxis max %d min %d size %d\n", out_rad, -1*out_rad, XSIZE);
-	printf("yaxis max %d min %d size %d\n", out_rad, -1*out_rad, YSIZE);
+	printf("xaxis nodraw max %d min %d size %d\n", out_rad, -1*out_rad, XSIZE);
+	printf("yaxis nodraw max %d min %d size %d\n", out_rad, -1*out_rad, YSIZE);
 
 	//Graph a circle using the equation for a circle
 	printf("newline pts");
