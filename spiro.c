@@ -24,6 +24,7 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 	int out_rad, in_rad;
+	
 	char *end;
 
 	out_rad = strtol(argv[1], &end, 10);
