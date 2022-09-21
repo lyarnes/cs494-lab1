@@ -10,6 +10,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+
+#define PRECISION 10
 
 int main(int argc, char **argv) {
 	
@@ -18,8 +21,10 @@ int main(int argc, char **argv) {
 		fprintf(stderr, "usage: spiro num-segments seg-length\n");
 		exit(1);
 	}
-	int num_segs, seg_len;
+	int radius, num_segs, seg_len;
 	char *end;
+
+	radius = 5;
 
 	num_segs = strtol(argv[1], &end, 10);
 	if (*end != '\0') {
@@ -35,13 +40,23 @@ int main(int argc, char **argv) {
 	//The beginning of a graph in jgraph spec */
 	printf("newgraph\n");	
 
+	//Graph a circle using the equation for a circle
+	printf("newcurve pts");
+	double y;
+	for (double x = (radius*-1.0); x <= radius; x+=(1.0/PRECISION)) {
+		y = sqrt((radius*radius - x*x));
+		printf(" %f %f", x, y);
+	}
+	printf("\n");
+	
 	//Our bottom-left corner is 0,0, therefore begin plotting there
-	for (int i = 0; i < num_segs; i++) {
+	/*for (int i = 0; i < num_segs; i++) {
 		printf("newcurve pts");
 		for (int j = 0; j < seg_len; j++) {
 			printf(" %d %d", i, j);
 		}
 		printf("\n");
-	}
+	}*/
+
 	return 0;
 }
