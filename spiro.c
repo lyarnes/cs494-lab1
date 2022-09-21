@@ -13,25 +13,25 @@
 #include <math.h>
 
 #define PRECISION 10
+#define XSIZE 4
+#define YSIZE 4
 
 int main(int argc, char **argv) {
 	
 	/* For now, will provide the number of line segments as parameter */
 	if (argc != 3) {
-		fprintf(stderr, "usage: spiro num-segments seg-length\n");
+		fprintf(stderr, "usage: spiro outer-radius inner-radius\n");
 		exit(1);
 	}
-	int radius, num_segs, seg_len;
+	int out_rad, in_rad;
 	char *end;
 
-	radius = 5;
-
-	num_segs = strtol(argv[1], &end, 10);
+	out_rad = strtol(argv[1], &end, 10);
 	if (*end != '\0') {
 		fprintf(stderr, "error: param 1 must be a valid base 10 integer\n");
 		exit(1);
 	}
-	seg_len = strtol(argv[2], &end, 10);
+	in_rad = strtol(argv[2], &end, 10);
 	if (*end != '\0') {
 		fprintf(stderr, "error: param 2 must be a valid base 10 integer\n");
 		exit(1);
@@ -39,12 +39,14 @@ int main(int argc, char **argv) {
 
 	//The beginning of a graph in jgraph spec */
 	printf("newgraph\n");	
+	printf("xaxis max %d min %d size %d\n", out_rad, -1*out_rad, XSIZE);
+	printf("yaxis max %d min %d size %d\n", out_rad, -1*out_rad, YSIZE);
 
 	//Graph a circle using the equation for a circle
 	printf("newline pts");
 	double y;
-	for (double x = (radius*-1.0); x <= radius; x+=(1.0/PRECISION)) {
-		y = sqrt((radius*radius - x*x));
+	for (double x = (out_rad*-1.0); x <= out_rad; x+=(1.0/PRECISION)) {
+		y = sqrt((out_rad*out_rad - x*x));
 		printf(" %f %f", x, y);
 	}
 	printf("\n");
