@@ -15,7 +15,7 @@ clean:
 	$(RM) $(TARGET)
 
 plot:
-	./spiro 3 5 > g.txt
+	./spiro $(PARAM1) $(PARAM2) > g.txt
 	./jgraph/jgraph -P g.txt | ps2pdf - > graph.pdf
 
 push:
