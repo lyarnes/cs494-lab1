@@ -47,6 +47,7 @@ int main(int argc, char **argv) {
 	double y;
 	for (double x = (out_rad*-1.0); x <= out_rad; x+=(1.0/PRECISION)) {
 		y = sqrt((out_rad*out_rad - x*x));
+		fprintf(stderr, "inside sqrt is %lf\n", sqrt(out_rad*out_rad - x*x));
 		printf(" %f %f", x, y);
 	}
 	printf("\n");
