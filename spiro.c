@@ -45,9 +45,13 @@ int main(int argc, char **argv) {
 	//Graph a circle using the equation for a circle
 	printf("newline pts");
 	double y;
-	for (double x = (out_rad*-1.0); x <= out_rad; x+=(1.0/PRECISION)) {
-		y = sqrt((out_rad*out_rad - x*x));
-		fprintf(stderr, "inside sqrt is %lf\n", sqrt(out_rad*out_rad - x*x));
+	for (double x = (out_rad*-1.0); x <= out_rad+0.0000001; x+=(1.0/PRECISION)) {
+		if (out_rad*out_rad - x*x < 0.000001) {
+			y = 0;
+		} else {
+			y = sqrt((out_rad*out_rad - x*x));
+		}
+		//fprintf(stderr, "inside sqrt is %lf\n", out_rad*out_rad - x*x);
 		printf(" %f %f", x, y);
 	}
 	printf("\n");
