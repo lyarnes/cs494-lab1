@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
 	printf("newgraph\n");	
 
 	//Graph a circle using the equation for a circle
-	printf("newcurve pts");
+	printf("newline pts");
 	double y;
 	for (double x = (radius*-1.0); x <= radius; x+=(1.0/PRECISION)) {
 		y = sqrt((radius*radius - x*x));
