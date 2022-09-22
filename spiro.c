@@ -16,6 +16,8 @@
 #define XSIZE 4
 #define YSIZE 4
 
+double *generate_circle_half(int radius, int half);
+
 int main(int argc, char **argv) {
 	
 	/* For now, will provide the number of line segments as parameter */
@@ -40,9 +42,6 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 
-	top = malloc(sizeof(double) * 2 * PRECISION * out_rad);
-	bottom = malloc(sizeof(double) * 2 * PRECISION * out_rad);
-
 	//The beginning of a graph in jgraph spec */
 	printf("newgraph\n");	
 	printf("xaxis nodraw max %d min %d size %d\n", out_rad, -1*out_rad, XSIZE);
@@ -50,7 +49,13 @@ int main(int argc, char **argv) {
 
 	//Graph a circle using the equation for a circle
 	printf("newcurve marksize 0.01 0.01 pts");
-	double x, y;
+	top = generate_circle_half(out_rad, 0);
+	bottom = generate_circle_half(out_rad, 1);
+	if (top == NULL || bottom == NULL) {
+		fprintf(stderr, "Error generating outer circle!\n");
+		exit(1);
+	}
+	/*double x, y;
 	int counter = 0;
 	for (int i = out_rad*-1; i < out_rad; i++) {
 		for (int j = 0; j < PRECISION; j++) {
@@ -60,7 +65,7 @@ int main(int argc, char **argv) {
 			bottom[counter * PRECISION + j] = y * -1;
 		}
 		counter++;
-	}
+	}*/
 	for (int i = 0; i <= 2*PRECISION*out_rad; i++) {
 		printf(" %.2f %f", ((double)i/(double)PRECISION) - out_rad, top[i]);
 	}
@@ -70,14 +75,26 @@ int main(int argc, char **argv) {
 	}
 	printf("\n");
 	
-	//Our bottom-left corner is 0,0, therefore begin plotting there
-	/*for (int i = 0; i < num_segs; i++) {
-		printf("newcurve pts");
-		for (int j = 0; j < seg_len; j++) {
-			printf(" %d %d", i, j);
-		}
-		printf("\n");
-	}*/
-
 	return 0;
+}
+
+double *generate_circle_half(int radius, int half) {
+	double *arr = malloc(sizeof(double)*2*PRECISION*radius);
+	double x, y;
+	int counter = 0;
+	for (int i = radius*-1; i < radius; i++) {
+		for (int j = 0; j < PRECISION; j++) {
+			x = (double)i + ((double)j / (double)PRECISION);
+			y = sqrt(radius*radius - x*x);
+			if (half == 0) {
+				arr[counter * PRECISION + j] = y;
+			} else if (half == 1) {
+				arr[counter * PRECISION + j] = y * -1;
+			} else {
+				return NULL; 
+			}
+		}
+		counter++;
+	}
+	return arr;
 }
