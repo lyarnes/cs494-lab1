@@ -1,0 +1,7 @@
+- Number of points on a circle should scale with radius of circle, times some initial macro PRECISION
+- Circle array will be 2*(PRECISION ~ radius) ints long, where the first half of the array covers
+  y values above the y axis and the second half covers y values below the axis
+- I think that generating an array of the outer circle is beneficial to do first, so if I need the values
+  down the line I don't have to recalculate in a bunch of odd parts of the code, and it gives me a bounding
+	box to work within -- plus, I'm convinced that by adding/subtracting the trajectory of point A from the
+	outer circle, I will end up with the shape I'm after

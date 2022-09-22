@@ -24,6 +24,7 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 	int out_rad, in_rad;
+	double *circle;
 	
 	char *end;
 
@@ -38,6 +39,8 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 
+	circle = malloc(sizeof(double) * 4 * PRECISION * out_rad);
+
 	//The beginning of a graph in jgraph spec */
 	printf("newgraph\n");	
 	printf("xaxis nodraw max %d min %d size %d\n", out_rad, -1*out_rad, XSIZE);
@@ -45,15 +48,18 @@ int main(int argc, char **argv) {
 
 	//Graph a circle using the equation for a circle
 	printf("newline pts");
-	double y;
-	for (double x = (out_rad*-1.0); x <= out_rad+0.0000001; x+=(1.0/PRECISION)) {
-		if (out_rad*out_rad - x*x < 0.000001) {
-			y = 0;
-		} else {
-			y = sqrt((out_rad*out_rad - x*x));
+	double x, y;
+	int counter = 0;
+	for (int i = out_rad*-1; i < out_rad; i++) {
+		for (int j = 0; j < PRECISION; j++) {
+			x = (double)i + ((double)j / (double)PRECISION);
+			y = sqrt(out_rad*out_rad - x*x);
+			circle[counter * PRECISION + j] = y;
+			circle[(counter+(2*out_rad)) * PRECISION + j] = y * -1;
 		}
-		//fprintf(stderr, "inside sqrt is %lf\n", out_rad*out_rad - x*x);
-		printf(" %f %f", x, y);
+	}
+	for (int i = 0; i < 2*PRECISION*out_rad; i++) {
+		printf(" %f %f", (double)i/(double)PRECISION, circle[i]);
 	}
 	printf("\n");
 	
