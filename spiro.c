@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
 	printf("newline pts");
 	double x, y;
 	int counter = 0;
-	for (int i = out_rad*-1; i < out_rad; i++) {
+	for (int i = out_rad*-1; i <= out_rad; i++) {
 		for (int j = 0; j < PRECISION; j++) {
 			x = (double)i + ((double)j / (double)PRECISION);
 			y = sqrt(out_rad*out_rad - x*x);
