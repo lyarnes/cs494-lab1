@@ -64,6 +64,7 @@ int main(int argc, char **argv) {
 	for (int i = 0; i < 2*PRECISION*out_rad; i++) {
 		printf(" %.2f %f", ((double)i/(double)PRECISION) - out_rad, top[i]);
 	}
+	printf("\nnewline pts");
 	for (int i = 0; i < 2*PRECISION*out_rad; i++) {
 		printf(" %.2f %f", ((double)i/(double)PRECISION) - out_rad, bottom[i]);
 	}
