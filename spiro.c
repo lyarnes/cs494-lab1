@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
 	printf("yaxis nodraw max %d min %d size %d\n", out_rad, -1*out_rad, YSIZE);
 
 	//Graph a circle using the equation for a circle
-	printf("newline pts");
+	printf("newcurve marksize 0.5 0.5 pts");
 	double x, y;
 	int counter = 0;
 	for (int i = out_rad*-1; i < out_rad; i++) {
@@ -64,7 +64,7 @@ int main(int argc, char **argv) {
 	for (int i = 0; i <= 2*PRECISION*out_rad; i++) {
 		printf(" %.2f %f", ((double)i/(double)PRECISION) - out_rad, top[i]);
 	}
-	printf("\nnewline pts");
+	printf("\nnewcurve marksize 0.5 0.5 pts");
 	for (int i = 2*PRECISION*out_rad; i >= 0; i--) {
 		printf(" %.2f %f", ((double)i/(double)PRECISION) - out_rad, bottom[i]);
 	}
