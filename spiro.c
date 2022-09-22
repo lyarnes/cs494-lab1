@@ -24,7 +24,8 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 	int out_rad, in_rad;
-	double *circle;
+	//Top and bottom halves of the circle
+	double *top, *bottom;
 	
 	char *end;
 
@@ -39,7 +40,8 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 
-	circle = malloc(sizeof(double) * 4 * PRECISION * out_rad);
+	top = malloc(sizeof(double) * 2 * PRECISION * out_rad);
+	bottom = malloc(sizeof(double) * 2 * PRECISION * out_rad);
 
 	//The beginning of a graph in jgraph spec */
 	printf("newgraph\n");	
@@ -54,12 +56,16 @@ int main(int argc, char **argv) {
 		for (int j = 0; j < PRECISION; j++) {
 			x = (double)i + ((double)j / (double)PRECISION);
 			y = sqrt(out_rad*out_rad - x*x);
-			circle[counter * PRECISION + j] = y;
-			circle[(counter+(2*out_rad)) * PRECISION + j] = y * -1;
+			top[counter * PRECISION + j] = y;
+			bottom[counter * PRECISION + j] = y * -1;
 		}
+		counter++;
 	}
 	for (int i = 0; i < 2*PRECISION*out_rad; i++) {
-		printf(" %f %f", (double)i/(double)PRECISION, circle[i]);
+		printf(" %.2f %f", ((double)i/(double)PRECISION) - out_rad, top[i]);
+	}
+	for (int i = 0; i < 2*PRECISION*out_rad; i++) {
+		printf(" %.2f %f", ((double)i/(double)PRECISION) - out_rad, bottom[i]);
 	}
 	printf("\n");
 	
