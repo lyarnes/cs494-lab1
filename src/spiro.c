@@ -92,6 +92,7 @@ int main(int argc, char **argv) {
 	 * denominator of the fraction r/R, where r is the radius of the inner
 	 * circle and R the radius of the outer circle */
 	
+	printf("newcurve marksize 0.01 0.01 pts");
 	int p = (LCM(out_rad, in_rad) / out_rad);
 	//int bound;
 	double x, y;
