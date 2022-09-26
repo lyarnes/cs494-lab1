@@ -2,12 +2,12 @@ CC = gcc
 CFLAGS = -g -Wall -Wextra
 LIBS = -lm
 
-TARGET = spiro
+TARGET = bin/spiro
 
 all: $(TARGET) plot push
 
-$(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(LIBS)
+bin/spiro: src/spiro.c
+	$(CC) $(CFLAGS) -o bin/spiro src/spiro.c $(LIBS)
 
 .PHONY: clean push plot
 
@@ -15,8 +15,8 @@ clean:
 	$(RM) $(TARGET)
 
 plot:
-	./spiro $(PARAM1) $(PARAM2) > g.txt
-	./jgraph/jgraph -P g.txt | ps2pdf - > graph.pdf
+	spiro $(PARAM1) $(PARAM2) > gen/g.txt
+	./jgraph/jgraph -P gen/g.txt | ps2pdf - > gen/graph.pdf
 
 push:
 	git add -A
