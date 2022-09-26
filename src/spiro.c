@@ -25,12 +25,12 @@ int main(int argc, char **argv) {
 
 	/* For now, will provide the number of line segments as parameter */
 	if (argc != 4) {
-		fprintf(stderr, "usage: spiro outer-radius inner-radius trace-point\n");
-		fprintf(stderr, "out-radius: radius of outer circle in spirograph\
-										 inner_radius: radius of inner circle in spirograph\
-										 trace-point: distance from center of inner circle where\
-																	tracing should occur. Must be between 0 and\
-																	inner-radius, inclusive\n");
+		fprintf(stderr, "usage: spiro outer-radius inner-radius trace-point\n\n");
+		fprintf(stderr, "out-radius: radius of outer circle in spirograph\n"
+										"inner_radius: radius of inner circle in spirograph\n"
+										"trace-point: distance from center of inner circle where\n"
+										"             tracing should occur. Must be between 0 and\n"
+										"             inner-radius, inclusive\n");
 		exit(1);
 	}
 	int out_rad, in_rad;
