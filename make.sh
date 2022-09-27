@@ -1,1 +1,0 @@
-PARAM1=$1 PARAM2=$2 PARAM3=$3 make
