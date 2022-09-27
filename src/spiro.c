@@ -25,22 +25,26 @@ long GCD(long a, long b);
 int main(int argc, char **argv) {
 
 	/* For now, will provide the number of line segments as parameter */
-	if (argc != 4) {
+	if (argc != 4 || argc != 7) {
 		fprintf(stderr, "usage: spiro outer-radius inner-radius trace-point\n\n");
 		fprintf(stderr, "out-radius: radius of outer circle in spirograph\n"
 										"inner_radius: radius of inner circle in spirograph\n"
 										"trace-point: distance from center of inner circle where\n"
 										"             tracing should occur. Must be between 0 and\n"
-										"             inner-radius, inclusive\n");
+										"             inner-radius, inclusive\n"
+										"print-guide: specify if outer circle should be printed (0 or 1)\n"
+										"color [OPTIONAL]: specify RGB values in that order, where\n"
+										"                  each value is a floating point number\n" 
+										"                  between 0 and 1, inclusive\n");
 		exit(1);
 	}
 	int out_rad, in_rad;
 	double h;
+	int print_guide;
+	double r_val, g_val, b_val;
 	double *top, *bottom;
 	
 	char *end;
-
-	int print_guide = 1;
 
 	/* Ensure the params passed are in correct format */
 	out_rad = strtol(argv[1], &end, 10);
@@ -58,6 +62,28 @@ int main(int argc, char **argv) {
 		fprintf(stderr, "error: param 3 must be a valid floating point number\n");
 		exit(1);
 	}
+	print_guide = strtol(argv[4], &end, 10);
+	if (*end != '\0') {
+		fprintf(stderr, "error: param 4 must be a valid base 10 integer\n");
+		exit(1);
+	}
+	if (argc == 7) {
+		r_val = strtod(argv[5], &end);
+		if (*end != '\0') {
+			fprintf(stderr, "error: param 5 must be a valid floating point number\n");
+			exit(1);
+		}
+		g_val = strtod(argv[6], &end);
+		if (*end != '\0') {
+			fprintf(stderr, "error: param 6 must be a valid floating point number\n");
+			exit(1);
+		}
+		b_val = strtod(argv[7], &end);
+		if (*end != '\0') {
+			fprintf(stderr, "error: param 7 must be a valid floating point number\n");
+			exit(1);
+		}
+	}
 
 	/* Generate the top and bottom halves of a circle. These will serve as
 	 * guidelines for the spirograph that will go within the outer circle */
@@ -70,8 +96,8 @@ int main(int argc, char **argv) {
 
 	/* Setup new jgraph */
 	printf("newgraph\n");	
-	printf("xaxis max %d min %d size %d\n", out_rad, -1*out_rad, XSIZE);
-	printf("yaxis max %d min %d size %d\n", out_rad, -1*out_rad, YSIZE);
+	printf("xaxis nodraw max %d min %d size %d\n", out_rad, -1*out_rad, XSIZE);
+	printf("yaxis nodraw max %d min %d size %d\n", out_rad, -1*out_rad, YSIZE);
 
 	/* Use the outer circle guideline arrays to print out the outer circle,
 	 * if desired */
@@ -93,7 +119,11 @@ int main(int argc, char **argv) {
 	 * denominator of the fraction r/R, where r is the radius of the inner
 	 * circle and R the radius of the outer circle */
 	
-	printf("newcurve linetype solid marksize 0.01 0.01 pts");
+	printf("newcurve linetype solid marksize 0.01 0.01 ");
+	if (argc == 7) {
+		printf("color %f %f %f ", r_val, g_val, b_val);
+	}
+	printf("pts ");
 	int p = (LCM(out_rad, in_rad) / out_rad);
 	//int bound;
 	double x, y;
