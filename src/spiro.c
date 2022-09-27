@@ -69,8 +69,8 @@ int main(int argc, char **argv) {
 
 	/* Setup new jgraph */
 	printf("newgraph\n");	
-	printf("xaxis nodraw max %d min %d size %d\n", out_rad, -1*out_rad, XSIZE);
-	printf("yaxis nodraw max %d min %d size %d\n", out_rad, -1*out_rad, YSIZE);
+	printf("xaxis max %d min %d size %d\n", out_rad, -1*out_rad, XSIZE);
+	printf("yaxis max %d min %d size %d\n", out_rad, -1*out_rad, YSIZE);
 
 	/* Use the outer circle guideline arrays to print out the outer circle,
 	 * if desired */
