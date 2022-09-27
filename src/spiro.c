@@ -14,7 +14,7 @@
 
 #define PRECISION 200    /* Number of x-points plotted per 1 point of diameter */
 #define XSIZE 4          /* Number of inches long the x-axis is in the graph   */
-#define YSIZE 5          /* Number of inches tall the y-axis is in the graph   */
+#define YSIZE 4          /* Number of inches tall the y-axis is in the graph   */
 
 #define PI 3.14159265358979323846
 
