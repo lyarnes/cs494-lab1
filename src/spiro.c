@@ -25,14 +25,14 @@ long GCD(long a, long b);
 int main(int argc, char **argv) {
 
 	/* For now, will provide the number of line segments as parameter */
-	if (argc != 4 || argc != 7) {
-		fprintf(stderr, "usage: spiro outer-radius inner-radius trace-point\n\n");
-		fprintf(stderr, "out-radius: radius of outer circle in spirograph\n"
-										"inner_radius: radius of inner circle in spirograph\n"
-										"trace-point: distance from center of inner circle where\n"
-										"             tracing should occur. Must be between 0 and\n"
-										"             inner-radius, inclusive\n"
-										"print-guide: specify if outer circle should be printed (0 or 1)\n"
+	if (argc != 5 && argc != 8) {
+		fprintf(stderr, "usage: spiro outer-radius inner-radius trace-point print-guide rcolor[OPT] gcolor[OPT] bcolor[OPT]\n\n");
+		fprintf(stderr, "out-radius:       radius of outer circle in spirograph\n"
+										"inner_radius:     radius of inner circle in spirograph\n"
+										"trace-point:      distance from center of inner circle where\n"
+										"                  tracing should occur. Must be between 0 and\n"
+										"                  inner-radius, inclusive\n"
+										"print-guide:      specify if outer circle should be printed (0 or 1)\n"
 										"color [OPTIONAL]: specify RGB values in that order, where\n"
 										"                  each value is a floating point number\n" 
 										"                  between 0 and 1, inclusive\n");
@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
 		fprintf(stderr, "error: param 4 must be a valid base 10 integer\n");
 		exit(1);
 	}
-	if (argc == 7) {
+	if (argc == 8) {
 		r_val = strtod(argv[5], &end);
 		if (*end != '\0') {
 			fprintf(stderr, "error: param 5 must be a valid floating point number\n");
@@ -120,7 +120,7 @@ int main(int argc, char **argv) {
 	 * circle and R the radius of the outer circle */
 	
 	printf("newcurve linetype solid marksize 0.01 0.01 ");
-	if (argc == 7) {
+	if (argc == 8) {
 		printf("color %f %f %f ", r_val, g_val, b_val);
 	}
 	printf("pts ");
@@ -134,8 +134,8 @@ int main(int argc, char **argv) {
 		for (int j = -1*out_rad; j < out_rad; j++) {
 			for (int k = 0; k < PRECISION; k++) {
 				t = ((counter * PRECISION + k) * 2 * PI * p) / PRECISION;
-				x = (out_rad-in_rad) * cos(t) + (h * in_rad * cos( ((out_rad-in_rad) * t) / in_rad));
-				y = (out_rad-in_rad) * sin(t) - (h * in_rad * sin( ((out_rad-in_rad) * t) / in_rad));
+				x = (out_rad-in_rad) * cos(t) + (h * cos( ((out_rad-in_rad) * t) / in_rad));
+				y = (out_rad-in_rad) * sin(t) - (h * sin( ((out_rad-in_rad) * t) / in_rad));
 				printf(" %f %f", x, y);
 			} 
 			counter++;
