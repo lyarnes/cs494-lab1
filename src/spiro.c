@@ -19,7 +19,8 @@
 #define PI 3.14159265358979323846
 
 double *generate_circle_half(int radius, int half);
-int LCM(int num1, int num2);
+long LCM(long a, long b);
+long GCD(long a, long b);
 
 int main(int argc, char **argv) {
 
@@ -135,11 +136,19 @@ double *generate_circle_half(int radius, int half) {
 	return arr;
 }
 
-int LCM(int num1, int num2) {
-	int res = (num1 >= num2) ? num1 : num2;
-	while(1) {
-		if (res % num1 == 0 && res % num2 == 0) return res;
-		res++;
+long LCM(long a, long b) {
+	if (a > b) {
+		return (a/GCD(a,b)*b);
+	} else {
+		return (b/GCD(a,b)*a);
 	}
 }
+
+long GCD(long a, long b) {
+	if (b == 0) {
+		return a;
+	}
+	return GCD(b, a%b);
+}
+
 	
