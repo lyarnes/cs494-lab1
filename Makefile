@@ -27,6 +27,9 @@ plot:
 	./bin/spiro 11 10 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph11df
 	
 push:
-	git add -A
-	git commit -m "message"
+	git add src/spiro.c
+	git add README.md
+	git add Makefile
+	git add jgraph
+	git commit -m "changing spiro or README"
 	git push -u origin main
