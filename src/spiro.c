@@ -104,8 +104,8 @@ int main(int argc, char **argv) {
 		for (int j = -1*out_rad; j < out_rad; j++) {
 			for (int k = 0; k < PRECISION; k++) {
 				t = ((counter * PRECISION + k) * 2 * PI * p) / PRECISION;
-				x = (out_rad-in_rad) * cos(t) + (h * cos( ((out_rad-in_rad) * t) / in_rad));
-				y = (out_rad-in_rad) * sin(t) - (h * sin( ((out_rad-in_rad) * t) / in_rad));
+				x = (out_rad-in_rad) * cos(t) + (h * in_rad * cos( ((out_rad-in_rad) * t) / in_rad));
+				y = (out_rad-in_rad) * sin(t) - (h * in_rad * sin( ((out_rad-in_rad) * t) / in_rad));
 				printf(" %f %f", x, y);
 			} 
 			counter++;
