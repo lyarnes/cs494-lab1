@@ -4,7 +4,7 @@ LIBS = -lm
 
 TARGET = bin/spiro
 
-all: $(TARGET)
+all: $(TARGET) plot
 
 bin/spiro: src/spiro.c
 	mkdir bin
