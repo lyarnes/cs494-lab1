@@ -7,6 +7,7 @@ TARGET = bin/spiro
 all: $(TARGET)
 
 bin/spiro: src/spiro.c
+	mkdir bin
 	$(CC) $(CFLAGS) -o bin/spiro src/spiro.c $(LIBS)
 
 .PHONY: clean push plot
