@@ -15,21 +15,17 @@ clean:
 	$(RM) $(TARGET)
 
 plot:
-	./bin/spiro 11 1 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph1.pdf
-	./bin/spiro 11 2 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph2.pdf
-	./bin/spiro 11 3 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph3.pdf
-	./bin/spiro 11 4 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph4.pdf
-	./bin/spiro 11 5 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph5.pdf
-	./bin/spiro 11 6 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph6.pdf
-	./bin/spiro 11 7 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph7.pdf
-	./bin/spiro 11 8 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph8.pdf
-	./bin/spiro 11 9 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph9.pdf
-	./bin/spiro 11 10 1 | ./jgraph/jgraph -P | ps2pdf - > gen/graph11df
+	./bin/spiro 9 5 5 1 1 1 1 | ./jgraph/jgraph -P | ps2pdf - | convert -units PixelsPerInch - -transparent white -density 900 images/graph1.png
+	./bin/spiro 9 5 2.5 1 1 1 1 | ./jgraph/jgraph -P | ps2pdf - | convert -units PixelsPerInch - -transparent white -density 900 images/graph2.png
+	./bin/spiro 29 7 6 1 1 1 1 | ./jgraph/jgraph -P | ps2pdf - | convert -units PixelsPerInch - -transparent white -density 900 images/graph3.png
+	./bin/spiro 29 21 18 1 1 1 1 | ./jgraph/jgraph -P | ps2pdf - | convert -units PixelsPerInch - -transparent white -density 900 images/graph4.png
+	./bin/spiro 17 23 23 1 1 1 1 | ./jgraph/jgraph -P | ps2pdf - | convert -units PixelsPerInch - -transparent white -density 900 images/graph5.png
 	
 push:
 	git add src/spiro.c
 	git add README.md
 	git add Makefile
 	git add jgraph
+	git add images
 	git commit -m "changing spiro or README"
 	git push -u origin main

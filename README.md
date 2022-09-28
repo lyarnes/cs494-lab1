@@ -19,3 +19,11 @@ which have the following meanings:
 - `g-color`: an optional parameter ( [0,1] ) to specify the amount of green that should be present in the color of the graph
 - `b-color`: an optional parameter ( [0,1] ) to specify the amount of blue that should be present in the color of the graph
 
+### Examples
+Below are some example runs of the program with differing values for the radii and trace-point. All of the examples have the print-guide parameter set to true so you have a reference for where the outer circle is.
+
+1. `./bin/spiro 9 5 5 1`
+	![./bin/spiro 9 5 5 1](images/graph1.png)
+
+2. `./bin/spiro 9 5 2.5 1`
+	![./bin/spiro 9 5 2.5 1](images/graph2.png)
