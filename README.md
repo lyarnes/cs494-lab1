@@ -1,6 +1,9 @@
 # CS494 - Lab1: Jgraph
 ## Spirograph Generator: created by Lucas Yarnes
 
+### Overview
+This program takes a series of inputs and generates a spirograph, which is a geometric drawing device that produces mathematical roulette curves of the variety known as hypotrochoids and epitrochoids.
+
 ### Compiling
 In order to compile, simply call `make` and the executable will be created in **bin**
 
@@ -15,3 +18,4 @@ which have the following meanings:
 - `r-color`: an optional parameter ( [0,1] ) to specify the amount of red that should be present in the color of the graph
 - `g-color`: an optional parameter ( [0,1] ) to specify the amount of green that should be present in the color of the graph
 - `b-color`: an optional parameter ( [0,1] ) to specify the amount of blue that should be present in the color of the graph
+
