@@ -23,6 +23,7 @@ which have the following meanings:
 Some important features of these spirographs to note:
 - Typically, the outer radius must be exclusively larger than the inner radius. However, this program is not restricted to that physical limit that physical spirographs must abide by. This produces an interesting result, and is showcased in example 5.
 - The closer the trace-point value is the inner radius, the spikier the peaks of the resulting spirograph will be. So too then the closer to 0 the value is, the rounder the resulting spirograph will be.
+- I would like to point out that the long run time of programs with more complex graphs is not a result of my program, but a result of jgraph taking forever to interpret the points, since larger graphs include tens of thousands of individual points
 
 ### Examples
 Below are some example runs of the program with differing values for the radii and trace-point. All of the examples have the print-guide parameter set to true so you have a reference for where the outer circle is.
