@@ -23,16 +23,21 @@ which have the following meanings:
 Below are some example runs of the program with differing values for the radii and trace-point. All of the examples have the print-guide parameter set to true so you have a reference for where the outer circle is.
 
 1. `./bin/spiro 9 5 5 1 1 0 1`
+
 	![./bin/spiro 9 5 5 1](images/graph1.png)
 
-2. `./bin/spiro 9 5 2.5 1`1 0 1
+2. `./bin/spiro 9 5 2.5 1 1 0 1`
+
 	![./bin/spiro 9 5 2.5 1](images/graph2.png)
 
 3. `./bin/spiro 29 7 6 1 1 0 1`
+
 	![./bin/spiro 29 7 6 1 1 0 1](images/graph3.png)
 
 4. `./bin/spiro 29 21 18 1 1 0 1`
+
 	![./bin/spiro 29 21 18 1 1 0 1](images/graph4.png)
 
 5. `./bin/spiro 17 23 23 1 1 0 1`
+
 	![./bin/spiro 17 23 23 1 1 0 1](images/graph5.png)
