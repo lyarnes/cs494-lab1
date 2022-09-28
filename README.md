@@ -19,6 +19,11 @@ which have the following meanings:
 - `g-color`: an optional parameter ( [0,1] ) to specify the amount of green that should be present in the color of the graph
 - `b-color`: an optional parameter ( [0,1] ) to specify the amount of blue that should be present in the color of the graph
 
+### Notes
+Some important features of these spirographs to note:
+- Typically, the outer radius must be exclusively larger than the inner radius. However, this program is not restricted to that physical limit that physical spirographs must abide by. This produces an interesting result, and is showcased in example 5.
+- The closer the trace-point value is the inner radius, the spikier the peaks of the resulting spirograph will be. So too then the closer to 0 the value is, the rounder the resulting spirograph will be.
+
 ### Examples
 Below are some example runs of the program with differing values for the radii and trace-point. All of the examples have the print-guide parameter set to true so you have a reference for where the outer circle is.
 
