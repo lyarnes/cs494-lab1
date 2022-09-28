@@ -4,7 +4,7 @@ LIBS = -lm
 
 TARGET = bin/spiro
 
-all: $(TARGET) plot push
+all: $(TARGET)
 
 bin/spiro: src/spiro.c
 	$(CC) $(CFLAGS) -o bin/spiro src/spiro.c $(LIBS)
